@@ -22,6 +22,14 @@ public class Donut extends MenuItem
     }
 
     public void itemPrice() {
+        double price = 0.0;
+        if(type == Consts.TYPE1){
+            price += Consts.YEAST_PRICE;
+        }else if(type == Consts.TYPE2){
+            price += Consts.CAKE_PRICE;
+        }else if(type == Consts.TYPE3){
+            price += Consts.HOLE_PRICE;
+        }
 
     }
     

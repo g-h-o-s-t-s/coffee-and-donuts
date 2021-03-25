@@ -34,11 +34,14 @@ public class Consts
             CAKE_PRICE = 1.59, HOLE_PRICE = 0.33;
     public static final String TYPE1 = "Yeast", TYPE2 = "Cake",
             TYPE3  = "Hole";
+    //Flavor options?- at least 3 but maybe more?
+    public static final String FLAVOR1 = "Glaze", FLAVOR2 = "Chocolate", FLAVOR3 = "Strawberry";
 
 
     /* Coffee() constants */
     public static final double BASE_PRICE = 1.99,
             ADD_IN_COST = 0.20, SIZE_COST = 0.50;
+    public static final double DOUBLE = 2, TRIPLE = 3;
     public static final String SHORT = "Short",
             TALL = "Tall", GRANDE = "Grande", VENTI = "Venti";
     public static final String ADD1 = "cream", ADD2 = "syrup",
