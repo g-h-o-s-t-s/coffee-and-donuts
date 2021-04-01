@@ -15,10 +15,10 @@ public class Consts
     public static final String EMPTY = "";
     public static final double salesTax = 0.06625;
 
-
-    /* Main() constants */
     public static final int DEFAULT_WIDTH = 1280;
-    public static final int DEFAULT_HEIGHT = 800;
+    public static final int DEFAULT_HEIGHT = 720;
+    public static final int REDUCED_WIDTH = 800;
+    public static final int REDUCED_HEIGHT = 450;
 
 
     /* Controller() constants */
