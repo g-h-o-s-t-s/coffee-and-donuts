@@ -15,6 +15,18 @@ public class MenuItem
      * Default constructor.
      */
     public MenuItem() {
-        price = 0.0;
+        price = Consts.ZERO;
+    }
+
+    public MenuItem(double p){
+        price = p;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public void setPrice(double p){
+        price = p;
     }
 }

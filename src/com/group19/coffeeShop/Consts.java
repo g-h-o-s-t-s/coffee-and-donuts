@@ -14,6 +14,7 @@ public class Consts
             = new DecimalFormat("$#,##0.00");
     public static final String EMPTY = "";
     public static final double salesTax = 0.06625;
+    public static final double ZERO = 0.0;
 
     public static final int DEFAULT_WIDTH = 1280;
     public static final int DEFAULT_HEIGHT = 720;
@@ -34,18 +35,20 @@ public class Consts
             CAKE_PRICE = 1.59, HOLE_PRICE = 0.33;
     public static final String TYPE1 = "Yeast", TYPE2 = "Cake",
             TYPE3  = "Hole";
-    //Flavor options?- at least 3 but maybe more?
-    public static final String FLAVOR1 = "Glaze", FLAVOR2 = "Chocolate", FLAVOR3 = "Strawberry";
+    //Flavor options for yeast donut
+    public static final String FLAVOR1 = "Vanilla Glaze", FLAVOR2 = "Chocolate", FLAVOR3 = "Old Fashion";
+    //Flavor options for cake donut
+    public static final String FLAVOR4 = "Boston Kreme", FLAVOR5 = "Strawberry", FLAVOR6 = "Jelly";
+    //Flavor options for donut hole
+    public static final String FLAVOR7 = "Pumpkin Spice", FLAVOR8 = "Chocolate Glaze", FLAVOR9 = "Powder";
 
 
     /* Coffee() constants */
     public static final double BASE_PRICE = 1.99,
             ADD_IN_COST = 0.20, SIZE_COST = 0.50;
     public static final double DOUBLE = 2, TRIPLE = 3;
-    public static final String SHORT = "Short",
-            TALL = "Tall", GRANDE = "Grande", VENTI = "Venti";
-    public static final String ADD1 = "cream", ADD2 = "syrup",
-            ADD3 = "milk", ADD4 = "caramel", ADD5 = "whipped cream";
+    public static final String SHORT = "Short", TALL = "Tall", GRANDE = "Grande", VENTI = "Venti";
+    public static final String ADD1 = "cream", ADD2 = "syrup", ADD3 = "milk", ADD4 = "caramel", ADD5 = "whipped cream";
 
 
     /**
