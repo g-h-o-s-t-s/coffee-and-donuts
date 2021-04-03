@@ -6,27 +6,44 @@ import static com.group19.coffeeShop.Consts.*;
  * Object superclass for all menu item types.
  @author Sagnik Mukherjee, Michael Choe
  */
-public class MenuItem
+public abstract class MenuItem
 {
     //object fields
     private double price;
 
-    /*
+    /**
      * Default constructor.
      */
     public MenuItem() {
-        price = Consts.ZERO;
+        price = ZERO;
     }
 
-    public MenuItem(double p){
+    /**
+     * Parameterized constructor.
+     * @param p price to be assigned to MenuItem
+     */
+    public MenuItem(double p) {
         price = p;
     }
 
-    public double getPrice(){
+    /**
+     * Getter for MenuItem price field.
+     * @return double value for price
+     */
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(double p){
+    /**
+     * Setter for MenuItem price field.
+     * @param p double value to set price to
+     */
+    public void setPrice(double p) {
         price = p;
     }
+
+    /**
+     * Abstract method to be implemented by subclasses as needed.
+     */
+    public abstract void itemPrice();
 }

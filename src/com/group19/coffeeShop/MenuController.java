@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
-
 import static com.group19.coffeeShop.Consts.*;
 
 /**
@@ -34,83 +33,104 @@ public class MenuController
      */
     public void initialize() {
         //Button Events, Ordering Items
-        orderDonutButton.setOnMouseClicked((event) -> {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource(
-                        "DonutsView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(),
-                        REDUCED_WIDTH, REDUCED_HEIGHT);
-                Stage stage = new Stage();
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.primaryStage);
-                stage.setTitle("New Donut Order");
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            } catch (IOException ex) {
-                throwAlert(ex.getMessage());
-            }
-        });
-
-        orderCoffeeButton.setOnMouseClicked((event) -> {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource(
-                        "CoffeeView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(),
-                        REDUCED_WIDTH, REDUCED_HEIGHT);
-                Stage stage = new Stage();
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.primaryStage);
-                stage.setTitle("New Coffee Order");
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            } catch (IOException ex) {
-                throwAlert(ex.getMessage());
-            }
-        });
+        orderDonutButton.setOnMouseClicked((event) -> orderDonut());
+        orderCoffeeButton.setOnMouseClicked((event) -> orderCoffee());
 
         //Button Events, Reviewing Order Contents and Order History
-        viewOrderButton.setOnMouseClicked((event) -> {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource(
-                        "OrderView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(),
-                        REDUCED_WIDTH, REDUCED_HEIGHT);
-                Stage stage = new Stage();
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.primaryStage);
-                stage.setTitle("Review Contents of Current Order");
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            } catch (IOException ex) {
-                throwAlert(ex.getMessage());
-            }
-        });
+        viewOrderButton.setOnMouseClicked((event) -> viewOrder());
+        viewStoreOrdersButton.setOnMouseClicked((event) -> viewStoreOrders());
+    }
 
-        viewStoreOrdersButton.setOnMouseClicked((event) -> {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource(
-                        "StoreOrdersView.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(),
-                        REDUCED_WIDTH, REDUCED_HEIGHT);
-                Stage stage = new Stage();
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(Main.primaryStage);
-                stage.setTitle("Review Overall Order History");
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            } catch (IOException ex) {
-                throwAlert(ex.getMessage());
-            }
-        });
+    /**
+     * Runs when viewStoreOrdersButton is clicked.
+     * Displays a sub-menu for ordering a Donut.
+     */
+    private void orderDonut() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource(
+                    "DonutsView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),
+                    REDUCED_WIDTH, REDUCED_HEIGHT);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(Main.primaryStage);
+            stage.setTitle("New Donut Order");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            throwAlert(ex.getMessage());
+        }
+    }
 
+    /**
+     * Runs when orderCoffeeButton is clicked.
+     * Displays a sub-menu for ordering a Coffee.
+     */
+    private void orderCoffee() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource(
+                    "CoffeeView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),
+                    REDUCED_WIDTH, REDUCED_HEIGHT);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(Main.primaryStage);
+            stage.setTitle("New Coffee Order");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            throwAlert(ex.getMessage());
+        }
+    }
+
+    /**
+     * Runs when viewOrderButton is clicked.
+     * Displays the current order details.
+     */
+    private void viewOrder() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource(
+                    "OrderView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),
+                    REDUCED_WIDTH, REDUCED_HEIGHT);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(Main.primaryStage);
+            stage.setTitle("Review Contents of Current Order");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            throwAlert(ex.getMessage());
+        }
+    }
+
+    /**
+     * Runs when viewStoreOrdersButton is clicked.
+     * Displays the order history for the current user.
+     */
+    private void viewStoreOrders() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource(
+                    "StoreOrdersView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(),
+                    REDUCED_WIDTH, REDUCED_HEIGHT);
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(Main.primaryStage);
+            stage.setTitle("Review Overall Order History");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            throwAlert(ex.getMessage());
+        }
     }
 
     /**

@@ -1,73 +1,134 @@
 package com.group19.coffeeShop;
 
+import java.util.ArrayList;
 import static com.group19.coffeeShop.Consts.*;
 
 /**
- * Represents an order of a Coffee-type MenuItem.
+ * Represents a Coffee-type MenuItem.
  @author Sagnik Mukherjee, Michael Choe
  */
 public class Coffee extends MenuItem implements Customizable
 {
     //object fields
     private String size;
-    private String addIn;
+    private ArrayList<String> addIns;
 
-    /*
+    /**
      * Default constructor.
      */
     public Coffee() {
         super();
         size = EMPTY;
-        addIn = EMPTY;
+        addIns = EMPTY_LIST;
     }
 
-    public Coffee(double p, String s, String a){
+    /**
+     * Parameterized constructor.
+     * @param p double value, price, assigned w/ super method
+     * @param s String value, coffee size
+     * @param a ArrayList of Strings, coffee add-ins
+     */
+    public Coffee(double p, String s, ArrayList<String> a) {
         super(p);
         size = s;
-        addIn = a;
+        addIns = a;
     }
 
+    /**
+     * Getter for Coffee size.
+     * @return String value, size of coffee
+     */
     public String getSize(){
         return size;
     }
 
+    /**
+     * Setter for Coffee size.
+     * @param s String value, size of coffee
+     */
     public void setSize(String s){
-        size = s;
+        this.size = s;
     }
 
-    public String getAddIn(){
-        return addIn;
+    /**
+     * Getter for List of add-ins.
+     * @return ArrayList of Strings, add-in values
+     */
+    public ArrayList<String> getAddIn(){
+        return addIns;
     }
 
-    public void setAddIn(String a){
-        addIn = a;
+    /**
+     * Setter for List of add-ins.
+     * @param a ArrayList of Strings, add-in values
+     */
+    public void setAddIn(ArrayList<String> a){
+        this.addIns = a;
     }
 
+    /**
+     * Getter for price of this Coffee.
+     * @return super.price field value
+     */
+    @Override
+    public double getPrice() {
+        return super.getPrice();
+    }
+
+    /**
+     * Setter for periodEarnings of this Coffee.
+     * @param p value to set super.price to
+     */
+    @Override
+    public void setPrice(double p) {
+        super.setPrice(p);
+    }
+
+    /**
+     * Assigns the price for this Donut item.
+     */
+    @Override
     public void itemPrice() {
-        double price = Consts.ZERO;
-        if(size.equals(Consts.SHORT)) {
-            price += Consts.BASE_PRICE;
-        }else if(size.equals(Consts.TALL)) {
-            price += Consts.BASE_PRICE + Consts.SIZE_COST;
-        }else if(size.equals(Consts.GRANDE)) {
-            price += Consts.BASE_PRICE + (Consts.DOUBLE * Consts.SIZE_COST);
-        }else if(size.equals(Consts.VENTI)){
-            price += Consts.BASE_PRICE + (Consts.TRIPLE * Consts.SIZE_COST);
+        double price = ZERO;
+        switch (size) {
+            case SHORT -> price += BASE_PRICE;
+            case TALL -> price += BASE_PRICE + SIZE_COST;
+            case GRANDE -> price += BASE_PRICE + (DOUBLE * SIZE_COST);
+            case VENTI -> price += BASE_PRICE + (TRIPLE * SIZE_COST);
         }
-        if(addIn.equals(Consts.ADD1) || addIn.equals(Consts.ADD2) || addIn.equals(Consts.ADD3) || addIn.equals(Consts.ADD4) || addIn.equals(Consts.ADD5)) {
-            price += Consts.ADD_IN_COST;
-        }
+        price += ADD_IN_COST * addIns.toArray().length;
+        setPrice(price);
     }
 
-
+    /**
+     * Implementing function from Customizable.
+     * Adds an add-in option to this Coffee.
+     * @param obj Object value to be added, given that it is both a String
+     *            value and a valid type of add-in
+     * @return boolean value, indicates the success of add(Object)
+     */
     @Override
     public boolean add(Object obj) {
-
+        //obj must be casted before it can be added to an ArrayList
+        //of String values.
+        if (obj instanceof String && ADD_IN_LIST.contains(obj))
+            return addIns.add((String) obj);
         return false;
     }
 
+    /**
+     * Implementing function from Customizable.
+     * Removes an add-in option from this Coffee.
+     * @param obj Object value to be removed, given that it is both a String
+     *            value and a valid type of add-in
+     * @return boolean value, indicates the success of remove(Object)
+     */
     @Override
     public boolean remove(Object obj) {
+        //obj is implied to be String if we are even to remove its matching
+        // value from the ArrayList, thus there is no casting necessary.
+        if (obj instanceof String && ADD_IN_LIST.contains(obj))
+            return addIns.remove(obj);
         return false;
     }
 }
