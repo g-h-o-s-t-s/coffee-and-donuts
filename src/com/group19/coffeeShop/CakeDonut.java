@@ -1,6 +1,7 @@
 package com.group19.coffeeShop;
 
 import static com.group19.coffeeShop.Consts.CAKE_PRICE;
+import static com.group19.coffeeShop.Consts.df;
 
 /**
  * Represents a CakeDonut-type MenuItem.
@@ -74,5 +75,15 @@ public class CakeDonut extends MenuItem
     @Override
     public void itemPrice() {
         setPrice(CAKE_PRICE);
+    }
+
+    /**
+     * Returns a String containing current CakeDonut details.
+     * @return String value, CakeDonut details
+     */
+    @Override
+    public String toString() {
+        return "Cake Donut, " + flavor + " Flavor, "
+                + df.format(getPrice()) + ".";
     }
 }

@@ -19,7 +19,7 @@ public class Coffee extends MenuItem implements Customizable
     public Coffee() {
         super();
         size = EMPTY;
-        addIns = EMPTY_LIST;
+        addIns = null;
     }
 
     /**
@@ -54,7 +54,7 @@ public class Coffee extends MenuItem implements Customizable
      * Getter for List of add-ins.
      * @return ArrayList of Strings, add-in values
      */
-    public ArrayList<String> getAddIn(){
+    public ArrayList<String> getAddIn() {
         return addIns;
     }
 
@@ -62,7 +62,7 @@ public class Coffee extends MenuItem implements Customizable
      * Setter for List of add-ins.
      * @param a ArrayList of Strings, add-in values
      */
-    public void setAddIn(ArrayList<String> a){
+    public void setAddIn(ArrayList<String> a) {
         this.addIns = a;
     }
 
@@ -130,5 +130,28 @@ public class Coffee extends MenuItem implements Customizable
         if (obj instanceof String && ADD_IN_LIST.contains(obj))
             return addIns.remove(obj);
         return false;
+    }
+
+    /**
+     * Returns a String containing current Coffee details.
+     * @return String value, Coffee details
+     */
+    @Override
+    public String toString() {
+        return size + " Coffee, with " + printAddIns()
+                + df.format(getPrice()) + ".";
+    }
+
+    /**
+     * Returns a String of selected addIns.
+     * @return String value, addIn details
+     */
+    private String printAddIns() {
+        StringBuilder result = new StringBuilder();
+        for (String s : addIns)
+        {
+            result.append(s).append(", ");
+        }
+        return result.toString();
     }
 }

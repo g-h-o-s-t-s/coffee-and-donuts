@@ -1,6 +1,7 @@
 package com.group19.coffeeShop;
 
 import static com.group19.coffeeShop.Consts.HOLE_PRICE;
+import static com.group19.coffeeShop.Consts.df;
 
 /**
  * Represents a HoleDonut-type MenuItem.
@@ -74,5 +75,15 @@ public class HoleDonut extends MenuItem
     @Override
     public void itemPrice() {
         setPrice(HOLE_PRICE);
+    }
+
+    /**
+     * Returns a String containing current HoleDonut details.
+     * @return String value, HoleDonut details
+     */
+    @Override
+    public String toString() {
+        return "Hole Donut, " + flavor + " Flavor, "
+                + df.format(getPrice()) + ".";
     }
 }

@@ -17,8 +17,6 @@ public class Consts
     public static final DecimalFormat df
             = new DecimalFormat("$#,##0.00");
     public static final String EMPTY = "";
-    public static final ArrayList<String> EMPTY_LIST =
-            new ArrayList<>(Collections.singleton(""));
     public static final double salesTax = 0.06625;
     public static final double ZERO = 0.0;
 
@@ -53,6 +51,12 @@ public class Consts
             ADD3 = "milk", ADD4 = "caramel", ADD5 = "whipped cream";
     public static final ArrayList<String> ADD_IN_LIST =
             (ArrayList<String>) Arrays.asList(ADD1, ADD2, ADD3, ADD4, ADD5);
+
+
+    /* Order() constants */
+
+
+    /* StoreOrders() constants */
 
 
     /**

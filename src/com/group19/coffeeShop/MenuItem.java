@@ -46,4 +46,11 @@ public abstract class MenuItem
      * Abstract method to be implemented by subclasses as needed.
      */
     public abstract void itemPrice();
+
+    /**
+     * Abstract method to be implemented by subclasses as needed.
+     * @return String value, detailed contents of this MenuItem.
+     */
+    @Override
+    public abstract String toString();
 }

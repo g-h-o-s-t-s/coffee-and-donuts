@@ -1,6 +1,7 @@
 package com.group19.coffeeShop;
 
 import static com.group19.coffeeShop.Consts.YEAST_PRICE;
+import static com.group19.coffeeShop.Consts.df;
 
 /**
  * Represents a YeastDonut-type MenuItem.
@@ -74,5 +75,15 @@ public class YeastDonut extends MenuItem
     @Override
     public void itemPrice() {
         setPrice(YEAST_PRICE);
+    }
+
+    /**
+     * Returns a String containing current YeastDonut details.
+     * @return String value, YeastDonut details
+     */
+    @Override
+    public String toString() {
+        return "Yeast Donut, " + flavor + " Flavor, "
+                + df.format(getPrice()) + ".";
     }
 }
