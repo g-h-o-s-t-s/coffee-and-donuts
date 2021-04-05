@@ -75,13 +75,7 @@ public class OrderController
      */
     private void updateFields() {
         MenuController.mainOrder.orderPrice();
-
-        subtotalText.setText(String.valueOf(
-                df.format(MenuController.mainOrder.getSubtotal())));
-        salesTaxText.setText(String.valueOf(
-                df.format(MenuController.mainOrder.getTax())));
-        totalText.setText(String.valueOf(
-                df.format(MenuController.mainOrder.getTotal())));
+        updateTexts();
 
         //populate currentOrders listView with all MenuItem
         //object details, but leave off the last line
@@ -90,5 +84,17 @@ public class OrderController
         String[] temp = MenuController.mainOrder.toString().split("\n");
         temp = Arrays.copyOf(temp, temp.length - 1);
         currentOrders.getItems().addAll(temp);
+    }
+
+    /**
+     * Another helper to update textAreas specifically.
+     */
+    private void updateTexts() {
+        subtotalText.setText(String.valueOf(
+                df.format(MenuController.mainOrder.getSubtotal())));
+        salesTaxText.setText(String.valueOf(
+                df.format(MenuController.mainOrder.getTax())));
+        totalText.setText(String.valueOf(
+                df.format(MenuController.mainOrder.getTotal())));
     }
 }

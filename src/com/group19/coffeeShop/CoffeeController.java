@@ -43,6 +43,7 @@ public class CoffeeController
             if (r != null) {
                 updateSize(r);
                 enableCheckboxes();
+                addToOrderButton.setDisable(false);
             }
         });
 
@@ -53,38 +54,23 @@ public class CoffeeController
 
     /**
      * Helper to add on Event Listeners for each distinct CheckBox,
-     * enables adding to the overall Order when clicked.
+     * updates respective flavor for tempCoffee.
      */
     private void initCheckListeners() {
         creamBox.selectedProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    updateAddIn(creamBox);
-                    addToOrderButton.setDisable(false);
-                });
+                (observable, oldValue, newValue) -> updateAddIn(creamBox));
 
         syrupBox.selectedProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    updateAddIn(syrupBox);
-                    addToOrderButton.setDisable(false);
-                });
+                (observable, oldValue, newValue) -> updateAddIn(syrupBox));
 
         milkBox.selectedProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    updateAddIn(milkBox);
-                    addToOrderButton.setDisable(false);
-                });
+                (observable, oldValue, newValue) -> updateAddIn(milkBox));
 
         caramelBox.selectedProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    updateAddIn(caramelBox);
-                    addToOrderButton.setDisable(false);
-                });
+                (observable, oldValue, newValue) -> updateAddIn(caramelBox));
 
         whippedBox.selectedProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    updateAddIn(whippedBox);
-                    addToOrderButton.setDisable(false);
-                });
+                (observable, oldValue, newValue) -> updateAddIn(whippedBox));
     }
 
     /**
