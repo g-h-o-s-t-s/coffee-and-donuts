@@ -1,93 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<?import javafx.scene.control.ToggleGroup?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity"
-            xmlns="http://javafx.com/javafx/15.0.1"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group19.coffeeShop.CoffeeController"
-            styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css">
-    <Label layoutX="218.0" layoutY="27.0" text="Order Coffee"
-           styleClass="label-title">
-    </Label>
-    <GridPane layoutY="66.0" prefHeight="142.0" prefWidth="567.0">
+<AnchorPane prefHeight="400.0" prefWidth="567.0" styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group19.coffeeShop.CoffeeController">
+    <GridPane hgap="2.0" layoutY="66.0" vgap="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="117.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="450.0" minWidth="10.0" prefWidth="450.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="117.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="450.0" minWidth="10.0" prefWidth="450.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES"/>
+         <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="66.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="66.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="76.0" valignment="CENTER" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="76.0" valignment="CENTER" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="76.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="170.0" text="Size"
-               textAlignment="CENTER"/>
-        <HBox alignment="CENTER" prefHeight="66.0" prefWidth="428.0" GridPane.columnIndex="1">
-            <RadioButton fx:id="size1" text="Short">
+
+        <Label styleClass="label-title" text="Order Coffee" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="170.0" text="Size" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <HBox alignment="CENTER" prefHeight="66.0" prefWidth="428.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <RadioButton text="Short">
                 <toggleGroup>
-                    <ToggleGroup fx:id="size"/>
+                    <ToggleGroup fx:id="size" />
                 </toggleGroup>
                 <padding>
-                    <Insets right="25.0"/>
+                    <Insets right="25.0" />
                 </padding>
             </RadioButton>
-            <RadioButton fx:id="size2" text="Tall" toggleGroup="$size">
+            <RadioButton contentDisplay="CENTER" text="Tall" textAlignment="CENTER" toggleGroup="$size">
                 <padding>
-                    <Insets right="25.0"/>
+                    <Insets right="25.0" />
                 </padding>
             </RadioButton>
-            <RadioButton fx:id="size3" text="Grande" toggleGroup="$size">
+            <RadioButton text="Grande" toggleGroup="$size">
                 <padding>
-                    <Insets right="25.0"/>
+                    <Insets right="25.0" />
                 </padding>
             </RadioButton>
-            <RadioButton fx:id="size4" text="Venti" toggleGroup="$size"/>
+            <RadioButton text="Venti" toggleGroup="$size" />
         </HBox>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="154.0" text="Add-Ins"
-               textAlignment="CENTER" GridPane.rowIndex="1"/>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
-              GridPane.rowIndex="1">
-            <CheckBox text="Cream">
-                <padding>
-                    <Insets right="10.0"/>
-                </padding>
-            </CheckBox>
-            <CheckBox text="Syrup">
-                <padding>
-                    <Insets right="10.0"/>
-                </padding>
-            </CheckBox>
-            <CheckBox text="Milk">
-                <padding>
-                    <Insets right="10.0"/>
-                </padding>
-            </CheckBox>
-            <CheckBox text="Caramel">
-                <padding>
-                    <Insets right="10.0"/>
-                </padding>
-            </CheckBox>
-            <CheckBox text="Whipped Cream"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="154.0" text="Add-Ins" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <HBox alignment="CENTER" spacing="5.0" styleClass="mini" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <CheckBox fx:id="creamBox" text="Cream" />
+            <CheckBox fx:id="syrupBox" text="Syrup" />
+            <CheckBox fx:id="milkBox" text="Milk" />
+            <CheckBox fx:id="caramelBox" text="Caramel" />
+            <CheckBox fx:id="whippedBox" text="Whipped Cream" />
         </HBox>
+       <Label text="Sub-total" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+       <TextField fx:id="subtotalText" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+        <Button fx:id="addToOrderButton" text="Add to Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
     </GridPane>
-    <Label layoutX="244.0" layoutY="229.0" text="Sub-total">
-        <font>
-          <Font size="20.0"/>
-        </font>
-    </Label>
-    <TextArea layoutX="189.0" layoutY="270.0" maxHeight="-Infinity" prefHeight="20.0" prefWidth="190.0"/>
-    <Button layoutX="240.0" layoutY="336.0" text="Add to Order"/>
 </AnchorPane>

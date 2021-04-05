@@ -38,3 +38,17 @@
     -fx-font-family: "SansSerif";
     -fx-background-color: #6f4e37;
 }
+
+.mini {
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+}
+
+.check-box {
+    -fx-border-color: lightblue;
+    -fx-font-size: 20;
+    -fx-border-insets: -5;
+    -fx-border-radius: 5;
+    -fx-border-style: dotted;
+    -fx-border-width: 2;
+}

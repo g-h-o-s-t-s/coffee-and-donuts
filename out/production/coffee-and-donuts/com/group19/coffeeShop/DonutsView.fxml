@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="606.0" styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group19.coffeeShop.DonutsController">
-    <ListView fx:id="flavors" layoutX="33.0" layoutY="145.0" prefHeight="288.0" prefWidth="199.0" />
-    <Label layoutX="265.0" layoutY="45.0" styleClass="label-title" text="Order Donut" />
-    <Button fx:id="addButton" layoutX="280.0" layoutY="187.0" text="Add" />
-    <Button fx:id="removeButton" layoutX="269.0" layoutY="241.0" text="Remove" />
-    <ListView fx:id="currentDonuts" layoutX="367.0" layoutY="145.0" prefHeight="288.0" prefWidth="206.0" />
-    <ComboBox fx:id="donutType" layoutX="60.0" layoutY="110.0" prefHeight="29.0" prefWidth="120.0" promptText="Select type..." visibleRowCount="3" />
-    <Label layoutX="427.0" layoutY="115.0" text="Current Donuts" />
-    <Label layoutX="277.0" layoutY="115.0" text="Quantity" />
-    <TextField fx:id="quantityText" layoutX="258.0" layoutY="145.0" prefHeight="29.0" prefWidth="86.0" />
-    <TextArea fx:id="subtotalText" layoutX="241.0" layoutY="318.0" minHeight="-Infinity" prefHeight="100.0" prefWidth="120.0" />
-    <Label layoutX="275.0" layoutY="289.0" text="Sub-total" />
-    <Button fx:id="addToOrderButton" layoutX="254.0" layoutY="446.0" text="Add to Order" />
-</AnchorPane>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group19.coffeeShop.DonutsController">
+    <GridPane alignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+        </rowConstraints>
+        <Label styleClass="label-title" text="Order Donut" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+        <ComboBox fx:id="donutType" promptText="Select type..." visibleRowCount="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+        <ListView fx:id="flavors" maxWidth="-Infinity" prefHeight="139.0" prefWidth="224.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.rowSpan="4" />
+        <Label text="Quantity" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <TextField fx:id="quantityText" maxWidth="-Infinity" prefHeight="29.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+        <Button fx:id="addButton" text="Add" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+        <Button fx:id="removeButton" text="Remove" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+        <Label text="Sub-total" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+        <TextArea fx:id="subtotalText" minHeight="-Infinity" prefHeight="39.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+        <Label text="Current Donuts" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <ListView fx:id="currentDonuts" maxWidth="-Infinity" prefHeight="241.0" prefWidth="274.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="5" />
+        <Button fx:id="addToOrderButton" text="Add to Order" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+    </GridPane>
+</VBox>

@@ -1,16 +1,8 @@
 package com.group19.coffeeShop;
 
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.cell.ComboBoxListCell;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.InputMismatchException;
 
 import static com.group19.coffeeShop.Consts.*;
 
@@ -18,32 +10,35 @@ import static com.group19.coffeeShop.Consts.*;
  * Controller class associated with DonutsView.fxml and GUI.
  @author Sagnik Mukherjee, Michael Choe
  */
+@SuppressWarnings("FieldMayBeFinal")
 public class DonutsController
 {
     /* -- Data Fields. -- */
-    static Order tempOrder = new Order();
-    static Donut tempDonut;
+    Order tempOrder;
+    Donut tempDonut;
 
     //JavaFX Node element handles.
-    public ComboBox<String> donutType;
-    public ListView<String> flavors = new ListView<>();
-    public Button addButton;
-    public Button removeButton;
-    public ListView<String> currentDonuts = new ListView<>();
-    public TextField quantityText;
-    public TextArea subtotalText;
-    public Button addToOrderButton;
+    @FXML private ComboBox<String> donutType;
+    @FXML private ListView<String> flavors = new ListView<>();
+    @FXML private Button addButton;
+    @FXML private Button removeButton;
+    @FXML private ListView<String> currentDonuts = new ListView<>();
+    @FXML private TextField quantityText;
+    @FXML private TextArea subtotalText;
+    @FXML private Button addToOrderButton;
 
     /**
      * A sort of "constructor" class for the Controller.
      * Links Action Events to related JavaFX nodes.
      */
     public void initialize() {
+        tempOrder = new Order();
         quantityText.setDisable(true);
         addButton.setDisable(true);
 
         donutType.getItems().addAll(TYPE1, TYPE2, TYPE3);
         donutType.setOnAction((event) -> showFlavors());
+
         //Each donut type has a default flavor, so clicking on
         //this when empty and adding that way still works.
         flavors.setOnMouseClicked((event) -> enableQuantity());
@@ -63,7 +58,6 @@ public class DonutsController
         String selected = donutType.getValue();
         switch (selected) {
             case TYPE1 -> {
-                tempDonut = new CakeDonut();
                 flavors.getItems().clear();
                 flavors.getItems().addAll(
                         String.valueOf(CakeDonut.CDFlavor.BOSTON_KREME),
@@ -71,7 +65,6 @@ public class DonutsController
                         String.valueOf(CakeDonut.CDFlavor.STRAWBERRY));
             }
             case TYPE2 -> {
-                tempDonut = new HoleDonut();
                 flavors.getItems().clear();
                 flavors.getItems().addAll(
                         String.valueOf(HoleDonut.HDFlavor.CHOCOLATE_GLAZE),
@@ -79,7 +72,6 @@ public class DonutsController
                         String.valueOf(HoleDonut.HDFlavor.PUMPKIN_SPICE));
             }
             case TYPE3 -> {
-                tempDonut = new YeastDonut();
                 flavors.getItems().clear();
                 flavors.getItems().addAll(
                         String.valueOf(YeastDonut.YDFlavor.CHOCOLATE),
@@ -88,6 +80,24 @@ public class DonutsController
             }
             default -> MenuController.throwAlert("Illegal value.");
         }
+    }
+
+    /**
+     * Event function to show quantity and set flavor/price for tempDonut.
+     */
+    private void enableQuantity() {
+        quantityText.setDisable(false);
+    }
+
+    /**
+     * Quick helper to reset flavors and quantity, disable quantity.
+     */
+    private void resetSelections() {
+        //forces user to start over each time
+        tempDonut = null;
+        flavors.getItems().clear();
+        quantityText.setText("");
+        quantityText.setDisable(true);
     }
 
     /**
@@ -105,17 +115,6 @@ public class DonutsController
         } catch (NumberFormatException | NullPointerException ex) {
             MenuController.throwAlert(ex.getMessage());
         }
-    }
-
-    /**
-     * Quick helper to reset flavors and quantity, disable quantity.
-     */
-    private void resetSelections() {
-        //forces user to start over each time
-        tempDonut = null;
-        flavors.getItems().clear();
-        quantityText.setText("");
-        quantityText.setDisable(true);
     }
 
     /**
@@ -166,7 +165,10 @@ public class DonutsController
     private void addToOrder() {
         try {
             if (tempOrder != null) {
-                MenuController.mainOrder = tempOrder;
+                for (MenuItem i : tempOrder.getItemList())
+                    MenuController.mainOrder.add(i);
+                //good to set null before closing out of sub-GUI
+                tempOrder = null;
                 Stage stage = (Stage) addToOrderButton.getScene().getWindow();
                 stage.close();
             }
@@ -174,13 +176,4 @@ public class DonutsController
             MenuController.throwAlert(ex.getMessage());
         }
     }
-
-    /**
-     * Event function to show quantity and set flavor/price for tempDonut.
-     */
-    private void enableQuantity() {
-        quantityText.setDisable(false);
-    }
-
-
 }

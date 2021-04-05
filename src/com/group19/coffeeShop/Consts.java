@@ -10,7 +10,7 @@ import java.util.Collections;
  * The Consts class houses all immutable constant values.
  @author Sagnik Mukherjee, Michael Choe
  */
-@SuppressWarnings({"WeakerAccess", "SpellCheckingInspection"})
+@SuppressWarnings({"WeakerAccess"})
 public class Consts
 {
     /* Constants which appear in multiple classes */
@@ -47,8 +47,8 @@ public class Consts
     public static final double DOUBLE = 2, TRIPLE = 3;
     public static final String SHORT = "Short", TALL = "Tall",
             GRANDE = "Grande", VENTI = "Venti";
-    public static final String ADD1 = "cream", ADD2 = "syrup",
-            ADD3 = "milk", ADD4 = "caramel", ADD5 = "whipped cream";
+    public static final String ADD1 = "Cream", ADD2 = "Syrup",
+            ADD3 = "Milk", ADD4 = "Caramel", ADD5 = "Whipped Cream";
 
 
     /* Order() constants */

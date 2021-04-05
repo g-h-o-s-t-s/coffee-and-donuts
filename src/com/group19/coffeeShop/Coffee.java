@@ -146,7 +146,7 @@ public class Coffee extends MenuItem implements Customizable
      * Returns a String of selected addIns.
      * @return String value, addIn details
      */
-    private String printAddIns() {
+    public String printAddIns() {
         StringBuilder result = new StringBuilder();
         for (String s : addIns)
         {
