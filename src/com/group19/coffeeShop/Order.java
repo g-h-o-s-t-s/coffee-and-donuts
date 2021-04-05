@@ -1,6 +1,6 @@
 package com.group19.coffeeShop;
 
-import java.awt.*;
+import static com.group19.coffeeShop.Consts.*;
 import java.util.ArrayList;
 
 /**
@@ -10,7 +10,9 @@ import java.util.ArrayList;
 public class Order implements Customizable
 {
     //object fields
-    private double orderCost;
+    private double total;
+    private double tax;
+    private double subtotal;
     private int orderID;
     private ArrayList<MenuItem> itemList;
 
@@ -18,38 +20,53 @@ public class Order implements Customizable
      * Default constructor.
      */
     public Order() {
-        orderCost = Consts.ZERO;
+        total = ZERO;
+        tax = ZERO;
+        subtotal = ZERO;
         orderID = 0;
         itemList = new ArrayList<>();
     }
 
     /**
      * Parameterized constructor.
-     * @param c double value, cost of order
+     * @param to double value, order total
+     * @param ta double value, tax total
+     * @param s double value, subtotal before tax
      * @param o int value, assigned sequentially based on StoreOrders
      *          controller, based on order of creation of objects
      * @param l ArrayList of MenuItems, Donuts and Coffees in this Order
      */
-    public Order(double c, int o, ArrayList<MenuItem> l) {
-        orderCost = c;
+    public Order(double to, double ta, double s,
+            int o, ArrayList<MenuItem> l) {
+        total = to;
+        tax = ta;
+        subtotal= s;
         orderID = o;
         itemList = l;
     }
 
     /**
-     * Getter for Order cost.
-     * @return double value, Order cost
+     * Getter for Order total.
+     * @return double value, Order total
      */
-    public double getOrderCost(){
-        return orderCost;
+    public double getTotal(){
+        return total;
     }
 
     /**
-     * Setter for Order cost.
-     * @param c double value, Order cost
+     * Getter for Order tax.
+     * @return double value, Order tax
      */
-    public void setOrderCost(int c) {
-        this.orderCost = c;
+    public double getTax(){
+        return tax;
+    }
+
+    /**
+     * Getter for Order subtotal.
+     * @return double value, Order subtotal
+     */
+    public double getSubtotal(){
+        return subtotal;
     }
 
     /**
@@ -64,7 +81,7 @@ public class Order implements Customizable
      * Setter for Order ID.
      * @param id int value, Order ID number
      */
-    public void setSize(int id){
+    public void setOrderID(int id){
         this.orderID = id;
     }
 
@@ -80,7 +97,7 @@ public class Order implements Customizable
      * Setter for List of MenuItems.
      * @param a ArrayList of MenuItems, items in current order
      */
-    public void setAddIn(ArrayList<MenuItem> a) {
+    public void setItemList(ArrayList<MenuItem> a) {
         this.itemList = a;
     }
 
@@ -88,10 +105,13 @@ public class Order implements Customizable
      * Calculates cost of order overall.
      */
     public void orderPrice() {
-        double total = Consts.ZERO;
+        double sub = Consts.ZERO;
         for (MenuItem i : itemList)
-            total += i.getPrice();
-        orderCost = total;
+            sub += i.getPrice();
+        subtotal = sub;
+
+        tax = subtotal * SALES_TAX;
+        total = subtotal + tax;
     }
 
     /**
@@ -104,8 +124,7 @@ public class Order implements Customizable
      */
     @Override
     public boolean add(Object obj) {
-        if (obj instanceof YeastDonut || obj instanceof CakeDonut ||
-            obj instanceof HoleDonut || obj instanceof Coffee)
+        if (obj instanceof Donut || obj instanceof Coffee)
             return itemList.add((MenuItem) obj);
         return false;
     }
@@ -119,8 +138,7 @@ public class Order implements Customizable
      */
     @Override
     public boolean remove(Object obj) {
-        if (obj instanceof YeastDonut || obj instanceof CakeDonut ||
-                obj instanceof HoleDonut || obj instanceof Coffee)
+        if (obj instanceof Donut || obj instanceof Coffee)
             return itemList.remove(obj);
         return false;
     }
@@ -136,6 +154,9 @@ public class Order implements Customizable
         {
             result.append(m.toString()).append("\n");
         }
+        result.append("Subtotal ").append(df.format(subtotal))
+            .append(", Tax ").append(df.format(tax)).append(", Total ")
+            .append(df.format(total));
         return result.toString();
     }
 }

@@ -68,4 +68,10 @@ public abstract class Donut extends MenuItem
      * Calculates the price for a set of donuts.
      */
     public abstract void itemPrice();
+
+    /**
+     * Abstract method, toString for each Donut type.
+     * @return String value, Donut contents
+     */
+    public abstract String toString();
 }

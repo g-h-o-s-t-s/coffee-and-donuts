@@ -104,7 +104,8 @@ public class YeastDonut extends Donut
     @Override
     public String toString() {
         return "Yeast Donut, " + flavor + " Flavor, " + amount +
-                "@" + YEAST_PRICE + " each, " + df.format(getPrice()) + ".";
+                " @ " + df.format(YEAST_PRICE) +
+                " each, " + df.format(getPrice()) + ".";
     }
 
     /**

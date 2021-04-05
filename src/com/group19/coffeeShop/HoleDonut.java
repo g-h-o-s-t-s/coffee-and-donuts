@@ -104,7 +104,8 @@ public class HoleDonut extends Donut
     @Override
     public String toString() {
         return "Hole Donut, " + flavor + " Flavor, " + amount +
-                "@" + HOLE_PRICE + " each, " + df.format(getPrice()) + ".";
+                " @ " + df.format(HOLE_PRICE)
+                + " each, " + df.format(getPrice()) + ".";
     }
 
     /**

@@ -138,7 +138,7 @@ public class Coffee extends MenuItem implements Customizable
      */
     @Override
     public String toString() {
-        return size + " Coffee, with " + printAddIns()
+        return size + " Coffee, " + printAddIns()
                 + df.format(getPrice()) + ".";
     }
 
@@ -147,11 +147,14 @@ public class Coffee extends MenuItem implements Customizable
      * @return String value, addIn details
      */
     public String printAddIns() {
-        StringBuilder result = new StringBuilder();
-        for (String s : addIns)
-        {
-            result.append(s).append(", ");
+        if (!addIns.isEmpty()) {
+            StringBuilder result = new StringBuilder();
+            for (String s : addIns) {
+                result.append(s).append(", ");
+            }
+            return result.toString();
         }
-        return result.toString();
+        else
+            return "Plain, ";
     }
 }

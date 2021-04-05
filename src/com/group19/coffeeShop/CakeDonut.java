@@ -105,7 +105,8 @@ public class CakeDonut extends Donut
     @Override
     public String toString() {
         return "Cake Donut, " + flavor + " Flavor, " + amount +
-                "@" + CAKE_PRICE + " each, " + df.format(getPrice()) + ".";
+                " @ " + df.format(CAKE_PRICE)
+                + " each, " + df.format(getPrice()) + ".";
     }
 
     /**

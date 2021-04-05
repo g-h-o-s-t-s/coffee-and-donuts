@@ -4,6 +4,8 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.Arrays;
+
 import static com.group19.coffeeShop.Consts.*;
 
 /**
@@ -118,15 +120,19 @@ public class DonutsController
     }
 
     /**
-     * Event function to remove most recently-added donut.
+     * Event function to remove the selected Donut item from currentDonuts.
+     * No action will occur if any item in the ListView is not selected.
      */
     private void removeDonut() {
         try {
-            setDonut();
-            tempOrder.remove(tempDonut);
+            if (!currentDonuts.getSelectionModel().isEmpty()) {
+                int selected =
+                        currentDonuts.getSelectionModel().getSelectedIndex();
+                tempOrder.getItemList().remove(selected);
 
-            refreshTextFields();
-        } catch (Exception ex) {
+                refreshTextFields();
+            }
+        } catch(Exception ex) {
             MenuController.throwAlert(ex.getMessage());
         }
     }
@@ -152,10 +158,12 @@ public class DonutsController
      */
     private void refreshTextFields() {
         currentDonuts.getItems().clear();
-        currentDonuts.getItems().addAll(
-                tempOrder.toString().split("\n"));
+        String[] temp = tempOrder.toString().split("\n");
+        temp = Arrays.copyOf(temp, temp.length - 1);
+        currentDonuts.getItems().addAll(temp);
+
         tempOrder.orderPrice();
-        double subtotal = tempOrder.getOrderCost();
+        double subtotal = tempOrder.getSubtotal();
         subtotalText.setText(df.format(subtotal));
     }
 

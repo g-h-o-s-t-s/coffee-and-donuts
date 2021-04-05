@@ -1,10 +1,6 @@
 package com.group19.coffeeShop;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * The Consts class houses all immutable constant values.
@@ -17,7 +13,8 @@ public class Consts
     public static final DecimalFormat df
             = new DecimalFormat("$#,##0.00");
     public static final String EMPTY = "";
-    public static final double salesTax = 0.06625;
+    //New Jersey Sales and Use Tax Rate = 6.625%
+    public static final double SALES_TAX = 0.06625;
     public static final double ZERO = 0.0;
 
     public static final int DEFAULT_WIDTH = 1280;
