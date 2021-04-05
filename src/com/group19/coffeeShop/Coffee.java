@@ -19,7 +19,7 @@ public class Coffee extends MenuItem implements Customizable
     public Coffee() {
         super();
         size = EMPTY;
-        addIns = null;
+        addIns = new ArrayList<>();
     }
 
     /**
@@ -111,7 +111,7 @@ public class Coffee extends MenuItem implements Customizable
     public boolean add(Object obj) {
         //obj must be casted before it can be added to an ArrayList
         //of String values.
-        if (obj instanceof String && ADD_IN_LIST.contains(obj))
+        if (obj instanceof String)
             return addIns.add((String) obj);
         return false;
     }
@@ -127,7 +127,7 @@ public class Coffee extends MenuItem implements Customizable
     public boolean remove(Object obj) {
         //obj is implied to be String if we are even to remove its matching
         // value from the ArrayList, thus there is no casting necessary.
-        if (obj instanceof String && ADD_IN_LIST.contains(obj))
+        if (obj instanceof String)
             return addIns.remove(obj);
         return false;
     }

@@ -7,9 +7,10 @@ import static com.group19.coffeeShop.Consts.df;
  * Represents a CakeDonut-type MenuItem.
  @author Sagnik Mukherjee, Michael Choe
  */
-public class CakeDonut extends MenuItem
+public class CakeDonut extends Donut
 {
     //object fields
+    private int amount;
     private CDFlavor flavor;
     public enum CDFlavor {
         BOSTON_KREME,
@@ -22,17 +23,36 @@ public class CakeDonut extends MenuItem
      */
     public CakeDonut() {
         super();
+        amount = 0;
         flavor = CDFlavor.JELLY;
     }
 
     /**
      * Parameterized constructor.
      * @param p double value, price, assigned w/ super method
+     * @param a int value, number of donuts
      * @param f String value, donut flavor
      */
-    public CakeDonut(double p, CDFlavor f) {
+    public CakeDonut(double p, int a, CDFlavor f) {
         super(p);
+        amount = a;
         flavor = f;
+    }
+
+    /**
+     * Getter for donut amount.
+     * @return int value, number of donuts
+     */
+    public int getAmount() {
+        return amount;
+    }
+
+    /**
+     * Setter for donut amount.
+     * @param a int value, number of donuts
+     */
+    public void setAmount(int a) {
+        amount = a;
     }
 
     /**
@@ -47,8 +67,9 @@ public class CakeDonut extends MenuItem
      * Setter for donut flavor.
      * @param f enum value, flavor of donut
      */
-    public void setFlavor(CDFlavor f) {
-        flavor = f;
+    public void setFlavor(Object f) {
+        if (f instanceof String)
+            flavor = CDFlavor.valueOf((String) f);
     }
 
     /**
@@ -61,7 +82,7 @@ public class CakeDonut extends MenuItem
     }
 
     /**
-     * Setter for periodEarnings of this Donut.
+     * Setter for price of this Donut.
      * @param p value to set super.price to
      */
     @Override
@@ -74,7 +95,7 @@ public class CakeDonut extends MenuItem
      */
     @Override
     public void itemPrice() {
-        setPrice(CAKE_PRICE);
+        setPrice(CAKE_PRICE * amount);
     }
 
     /**
@@ -83,7 +104,26 @@ public class CakeDonut extends MenuItem
      */
     @Override
     public String toString() {
-        return "Cake Donut, " + flavor + " Flavor, "
-                + df.format(getPrice()) + ".";
+        return "Cake Donut, " + flavor + " Flavor, " + amount +
+                "@" + CAKE_PRICE + " each, " + df.format(getPrice()) + ".";
+    }
+
+    /**
+     * Compares two objects of this type and determines their equality.
+     * @return boolean value, true if objects equal, false otherwise
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+
+        if (!(o instanceof CakeDonut that)) {
+            return false;
+        }
+
+        //'==' is better for null-safety for enum types.
+        return Double.compare(this.getPrice(), that.getPrice()) == 0
+                && this.getAmount() == that.getAmount()
+                && this.flavor == that.flavor;
     }
 }

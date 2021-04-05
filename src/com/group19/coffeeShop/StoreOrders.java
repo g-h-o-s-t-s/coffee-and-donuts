@@ -15,7 +15,7 @@ public class StoreOrders implements Customizable
      * Default constructor.
      */
     public StoreOrders() {
-        orderList = null;
+        orderList = new ArrayList<>();
     }
 
     /**

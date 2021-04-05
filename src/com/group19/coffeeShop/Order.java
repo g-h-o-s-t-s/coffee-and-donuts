@@ -1,5 +1,6 @@
 package com.group19.coffeeShop;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class Order implements Customizable
 {
     //object fields
+    private double orderCost;
     private int orderID;
     private ArrayList<MenuItem> itemList;
 
@@ -16,19 +18,38 @@ public class Order implements Customizable
      * Default constructor.
      */
     public Order() {
+        orderCost = Consts.ZERO;
         orderID = 0;
-        itemList = null;
+        itemList = new ArrayList<>();
     }
 
     /**
      * Parameterized constructor.
+     * @param c double value, cost of order
      * @param o int value, assigned sequentially based on StoreOrders
      *          controller, based on order of creation of objects
      * @param l ArrayList of MenuItems, Donuts and Coffees in this Order
      */
-    public Order(int o, ArrayList<MenuItem> l) {
+    public Order(double c, int o, ArrayList<MenuItem> l) {
+        orderCost = c;
         orderID = o;
         itemList = l;
+    }
+
+    /**
+     * Getter for Order cost.
+     * @return double value, Order cost
+     */
+    public double getOrderCost(){
+        return orderCost;
+    }
+
+    /**
+     * Setter for Order cost.
+     * @param c double value, Order cost
+     */
+    public void setOrderCost(int c) {
+        this.orderCost = c;
     }
 
     /**
@@ -61,6 +82,16 @@ public class Order implements Customizable
      */
     public void setAddIn(ArrayList<MenuItem> a) {
         this.itemList = a;
+    }
+
+    /**
+     * Calculates cost of order overall.
+     */
+    public void orderPrice() {
+        double total = Consts.ZERO;
+        for (MenuItem i : itemList)
+            total += i.getPrice();
+        orderCost = total;
     }
 
     /**

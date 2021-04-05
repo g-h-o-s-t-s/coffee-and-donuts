@@ -2,7 +2,7 @@
 .root {
     -fx-font-family: "Arial";
     -fx-background-color: #ecb176;
-    -fx-font-size: 15pt;
+    -fx-font-size: 14pt;
 }
 
 .button,
@@ -10,7 +10,6 @@
 .split-menu-button > .label,
 .split-menu-button > .arrow-button {
     -fx-background-color: #d99a6c;
-    -fx-font-size: 14pt;
 }
 
 .button:hover,
@@ -26,7 +25,7 @@
 }
 
 .label {
-    -fx-font-size: 15pt;
+    -fx-font-size: 14pt;
 }
 
 .label-title {
@@ -35,14 +34,7 @@
 }
 
 .text-area {
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-family: "SansSerif";
     -fx-background-color: #6f4e37;
-    -fx-font-size: 18pt;
-}
-
-.context-menu {
-    -fx-background-color: white ;
-    -fx-border-width: 1px;
-    -fx-border-color: black;
 }

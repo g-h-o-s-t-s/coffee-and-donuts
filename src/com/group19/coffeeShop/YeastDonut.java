@@ -1,15 +1,15 @@
 package com.group19.coffeeShop;
 
-import static com.group19.coffeeShop.Consts.YEAST_PRICE;
-import static com.group19.coffeeShop.Consts.df;
+import static com.group19.coffeeShop.Consts.*;
 
 /**
  * Represents a YeastDonut-type MenuItem.
  @author Sagnik Mukherjee, Michael Choe
  */
-public class YeastDonut extends MenuItem
+public class YeastDonut extends Donut
 {
     //object fields
+    private int amount;
     private YDFlavor flavor;
     public enum YDFlavor {
         VANILLA_GLAZE,
@@ -22,16 +22,19 @@ public class YeastDonut extends MenuItem
      */
     public YeastDonut() {
         super();
+        amount = 0;
         flavor = YDFlavor.OLD_FASHIONED;
     }
 
     /**
      * Parameterized constructor.
      * @param p double value, price, assigned w/ super method
+     * @param a int value, number of donuts
      * @param f String value, donut flavor
      */
-    public YeastDonut(double p, YDFlavor f) {
+    public YeastDonut(double p, int a, YDFlavor f) {
         super(p);
+        amount = a;
         flavor = f;
     }
 
@@ -47,8 +50,25 @@ public class YeastDonut extends MenuItem
      * Setter for donut flavor.
      * @param f enum value, flavor of donut
      */
-    public void setFlavor(YDFlavor f) {
-        flavor = f;
+    public void setFlavor(Object f) {
+        if (f instanceof String)
+            flavor = YDFlavor.valueOf((String) f);
+    }
+
+    /**
+     * Getter for donut amount.
+     * @return int value, number of donuts
+     */
+    public int getAmount() {
+        return amount;
+    }
+
+    /**
+     * Setter for donut amount.
+     * @param a int value, number of donuts
+     */
+    public void setAmount(int a) {
+        amount = a;
     }
 
     /**
@@ -61,7 +81,7 @@ public class YeastDonut extends MenuItem
     }
 
     /**
-     * Setter for periodEarnings of this Donut.
+     * Setter for price of this Donut.
      * @param p value to set super.price to
      */
     @Override
@@ -74,7 +94,7 @@ public class YeastDonut extends MenuItem
      */
     @Override
     public void itemPrice() {
-        setPrice(YEAST_PRICE);
+        setPrice(YEAST_PRICE * amount);
     }
 
     /**
@@ -83,7 +103,26 @@ public class YeastDonut extends MenuItem
      */
     @Override
     public String toString() {
-        return "Yeast Donut, " + flavor + " Flavor, "
-                + df.format(getPrice()) + ".";
+        return "Yeast Donut, " + flavor + " Flavor, " + amount +
+                "@" + YEAST_PRICE + " each, " + df.format(getPrice()) + ".";
+    }
+
+    /**
+     * Compares two objects of this type and determines their equality.
+     * @return boolean value, true if objects equal, false otherwise
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+
+        if (!(o instanceof YeastDonut that)) {
+            return false;
+        }
+
+        //'==' is better for null-safety for enum types.
+        return Double.compare(this.getPrice(), that.getPrice()) == 0
+                && this.getAmount() == that.getAmount()
+                && this.flavor == that.flavor;
     }
 }

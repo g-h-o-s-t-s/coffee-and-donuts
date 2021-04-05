@@ -1,15 +1,15 @@
 package com.group19.coffeeShop;
 
-import static com.group19.coffeeShop.Consts.HOLE_PRICE;
-import static com.group19.coffeeShop.Consts.df;
+import static com.group19.coffeeShop.Consts.*;
 
 /**
  * Represents a HoleDonut-type MenuItem.
  @author Sagnik Mukherjee, Michael Choe
  */
-public class HoleDonut extends MenuItem
+public class HoleDonut extends Donut
 {
     //object fields
+    private int amount;
     private HDFlavor flavor;
     public enum HDFlavor {
         PUMPKIN_SPICE,
@@ -22,16 +22,19 @@ public class HoleDonut extends MenuItem
      */
     public HoleDonut() {
         super();
+        amount = 0;
         flavor = HDFlavor.POWDERED;
     }
 
     /**
      * Parameterized constructor.
      * @param p double value, price, assigned w/ super method
+     * @param a int value, number of donuts
      * @param f String value, donut flavor
      */
-    public HoleDonut(double p, HDFlavor f) {
+    public HoleDonut(double p, int a, HDFlavor f) {
         super(p);
+        amount = a;
         flavor = f;
     }
 
@@ -47,8 +50,25 @@ public class HoleDonut extends MenuItem
      * Setter for donut flavor.
      * @param f enum value, flavor of donut
      */
-    public void setFlavor(HDFlavor f) {
-        flavor = f;
+    public void setFlavor(Object f) {
+        if (f instanceof String)
+            flavor = HDFlavor.valueOf((String) f);
+    }
+
+    /**
+     * Getter for donut amount.
+     * @return int value, number of donuts
+     */
+    public int getAmount() {
+        return amount;
+    }
+
+    /**
+     * Setter for donut amount.
+     * @param a int value, number of donuts
+     */
+    public void setAmount(int a) {
+        amount = a;
     }
 
     /**
@@ -61,7 +81,7 @@ public class HoleDonut extends MenuItem
     }
 
     /**
-     * Setter for periodEarnings of this Donut.
+     * Setter for price of this Donut.
      * @param p value to set super.price to
      */
     @Override
@@ -74,7 +94,7 @@ public class HoleDonut extends MenuItem
      */
     @Override
     public void itemPrice() {
-        setPrice(HOLE_PRICE);
+        setPrice(HOLE_PRICE * amount);
     }
 
     /**
@@ -83,7 +103,26 @@ public class HoleDonut extends MenuItem
      */
     @Override
     public String toString() {
-        return "Hole Donut, " + flavor + " Flavor, "
-                + df.format(getPrice()) + ".";
+        return "Hole Donut, " + flavor + " Flavor, " + amount +
+                "@" + HOLE_PRICE + " each, " + df.format(getPrice()) + ".";
+    }
+
+    /**
+     * Compares two objects of this type and determines their equality.
+     * @return boolean value, true if objects equal, false otherwise
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+
+        if (!(o instanceof HoleDonut that)) {
+            return false;
+        }
+
+        //'==' is better for null-safety for enum types.
+        return Double.compare(this.getPrice(), that.getPrice()) == 0
+                && this.getAmount() == that.getAmount()
+                && this.flavor == that.flavor;
     }
 }

@@ -15,8 +15,10 @@ import static com.group19.coffeeShop.Consts.*;
  */
 public class MenuController
 {
-    /* -- Data Fields. */
-    //General Usage.
+    /* -- Data Fields. -- */
+    //Miscellaneous for overall program.
+    static Order mainOrder = new Order();
+    static StoreOrders mainStoreOrder = new StoreOrders();
 
     //MenuItem Ordering Nodes, spawn new windows.
     @FXML private Button orderDonutButton;
@@ -149,6 +151,4 @@ public class MenuController
             }
         });
     }
-
-
 }

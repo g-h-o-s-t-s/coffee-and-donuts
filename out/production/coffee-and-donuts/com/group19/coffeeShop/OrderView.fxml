@@ -14,11 +14,10 @@
             minHeight="-Infinity" minWidth="-Infinity"
             xmlns="http://javafx.com/javafx/15.0.1"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group19.coffeeShop.OrderController">
-    <Label layoutX="195.0" layoutY="24.0" text="Your Order">
-        <font>
-          <Font size="24.0"/>
-        </font>
+            fx:controller="com.group19.coffeeShop.OrderController"
+            styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css">
+    <Label layoutX="195.0" layoutY="24.0" text="Your Order Details"
+           styleClass="label-title">
     </Label>
     <ListView layoutX="25.0" layoutY="141.0" prefHeight="200.0" prefWidth="450.0"/>
     <HBox alignment="CENTER" layoutX="28.0" layoutY="64.0" prefHeight="57.0" prefWidth="450.0">
@@ -41,6 +40,6 @@
         </Label>
         <TextArea maxHeight="-Infinity" prefHeight="10.0" prefWidth="80.0"/>
     </HBox>
-    <Button layoutX="110.0" layoutY="359.0" text="Remove Selected Item"/>
+    <Button layoutX="110.0" layoutY="359.0" text="Remove Item"/>
     <Button layoutX="306.0" layoutY="359.0" text="Place Order"/>
 </AnchorPane>

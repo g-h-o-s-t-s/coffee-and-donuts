@@ -11,13 +11,11 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity"
             xmlns="http://javafx.com/javafx/15.0.1"
-            xmlns:fx="http://javafx.com/fxml"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.group19.coffeeShop.MenuController"
             styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css">
-    <Label layoutX="534.0" layoutY="77.0" text="RecUperation Café">
-        <font>
-            <Font size="36.0"/>
-        </font>
+    <Label layoutX="484.0" layoutY="77.0" text="RecUperation Café"
+            styleClass="label-title">
     </Label>
     <Button fx:id = "orderDonutButton"
             contentDisplay="TOP" layoutX="336.0" layoutY="168.0" prefHeight="165.0"
@@ -29,7 +27,7 @@
         </graphic>
     </Button>
     <Button fx:id = "orderCoffeeButton"
-            contentDisplay="TOP" layoutX="651.0" layoutY="168.0" prefHeight="150.0"
+            contentDisplay="TOP" layoutX="671.0" layoutY="168.0" prefHeight="150.0"
             prefWidth="198.0" text="Order Coffee">
         <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">

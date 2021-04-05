@@ -14,15 +14,15 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.control.ToggleGroup?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity"
             xmlns="http://javafx.com/javafx/15.0.1"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group19.coffeeShop.CoffeeController">
-    <Label layoutX="218.0" layoutY="27.0" text="Order Coffee">
-        <font>
-          <Font size="24.0"/>
-        </font>
+            fx:controller="com.group19.coffeeShop.CoffeeController"
+            styleClass="root" stylesheets="/com/group19/coffeeShop/styles.css">
+    <Label layoutX="218.0" layoutY="27.0" text="Order Coffee"
+           styleClass="label-title">
     </Label>
     <GridPane layoutY="66.0" prefHeight="142.0" prefWidth="567.0">
         <columnConstraints>
@@ -36,22 +36,25 @@
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="170.0" text="Size"
                textAlignment="CENTER"/>
         <HBox alignment="CENTER" prefHeight="66.0" prefWidth="428.0" GridPane.columnIndex="1">
-            <RadioButton text="Short">
+            <RadioButton fx:id="size1" text="Short">
+                <toggleGroup>
+                    <ToggleGroup fx:id="size"/>
+                </toggleGroup>
                 <padding>
                     <Insets right="25.0"/>
                 </padding>
             </RadioButton>
-            <RadioButton contentDisplay="CENTER" text="Tall" textAlignment="CENTER">
+            <RadioButton fx:id="size2" text="Tall" toggleGroup="$size">
                 <padding>
                     <Insets right="25.0"/>
                 </padding>
             </RadioButton>
-            <RadioButton text="Grande">
+            <RadioButton fx:id="size3" text="Grande" toggleGroup="$size">
                 <padding>
                     <Insets right="25.0"/>
                 </padding>
             </RadioButton>
-            <RadioButton text="Venti"/>
+            <RadioButton fx:id="size4" text="Venti" toggleGroup="$size"/>
         </HBox>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="154.0" text="Add-Ins"
                textAlignment="CENTER" GridPane.rowIndex="1"/>

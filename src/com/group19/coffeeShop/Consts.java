@@ -22,8 +22,8 @@ public class Consts
 
     public static final int DEFAULT_WIDTH = 1280;
     public static final int DEFAULT_HEIGHT = 720;
-    public static final int REDUCED_WIDTH = 800;
-    public static final int REDUCED_HEIGHT = 450;
+    public static final int REDUCED_WIDTH = 960,
+            REDUCED_HEIGHT = 540;
 
 
     /* Controller() constants */
@@ -37,8 +37,8 @@ public class Consts
     /* Donut() constants */
     public static final double YEAST_PRICE = 1.39,
             CAKE_PRICE = 1.59, HOLE_PRICE = 0.33;
-    public static final String TYPE1 = "Yeast", TYPE2 = "Cake",
-            TYPE3  = "Hole";
+    public static final String TYPE1 = "CakeDonut", TYPE2 = "HoleDonut",
+            TYPE3  = "YeastDonut";
 
 
     /* Coffee() constants */
@@ -49,8 +49,6 @@ public class Consts
             GRANDE = "Grande", VENTI = "Venti";
     public static final String ADD1 = "cream", ADD2 = "syrup",
             ADD3 = "milk", ADD4 = "caramel", ADD5 = "whipped cream";
-    public static final ArrayList<String> ADD_IN_LIST =
-            (ArrayList<String>) Arrays.asList(ADD1, ADD2, ADD3, ADD4, ADD5);
 
 
     /* Order() constants */
