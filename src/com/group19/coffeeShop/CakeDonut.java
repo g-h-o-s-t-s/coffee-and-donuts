@@ -28,39 +28,11 @@ public class CakeDonut extends Donut
     }
 
     /**
-     * Parameterized constructor.
-     * @param p double value, price, assigned w/ super method
-     * @param a int value, number of donuts
-     * @param f String value, donut flavor
-     */
-    public CakeDonut(double p, int a, CDFlavor f) {
-        super(p);
-        amount = a;
-        flavor = f;
-    }
-
-    /**
-     * Getter for donut amount.
-     * @return int value, number of donuts
-     */
-    public int getAmount() {
-        return amount;
-    }
-
-    /**
      * Setter for donut amount.
      * @param a int value, number of donuts
      */
     public void setAmount(int a) {
         amount = a;
-    }
-
-    /**
-     * Getter for donut flavor.
-     * @return enum value, flavor of donut
-     */
-    public CDFlavor getFlavor() {
-        return flavor;
     }
 
     /**
@@ -107,24 +79,5 @@ public class CakeDonut extends Donut
         return "Cake Donut, " + flavor + " Flavor, " + amount +
                 " @ " + df.format(CAKE_PRICE)
                 + " each, " + df.format(getPrice()) + ".";
-    }
-
-    /**
-     * Compares two objects of this type and determines their equality.
-     * @return boolean value, true if objects equal, false otherwise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-
-        if (!(o instanceof CakeDonut that)) {
-            return false;
-        }
-
-        //'==' is better for null-safety for enum types.
-        return Double.compare(this.getPrice(), that.getPrice()) == 0
-                && this.getAmount() == that.getAmount()
-                && this.flavor == that.flavor;
     }
 }

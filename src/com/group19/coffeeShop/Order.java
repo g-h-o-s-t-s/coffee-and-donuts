@@ -2,11 +2,17 @@ package com.group19.coffeeShop;
 
 import static com.group19.coffeeShop.Consts.*;
 import java.util.ArrayList;
+import java.util.Random;
+
+import static com.group19.coffeeShop.Consts.orderf;
+import static com.group19.coffeeShop.Consts.FROM;
+import static com.group19.coffeeShop.Consts.TO;
 
 /**
  * Represents a list of MenuItems ordered by user.
  @author Sagnik Mukherjee, Michael Choe
  */
+@SuppressWarnings("FieldMayBeFinal")
 public class Order implements Customizable
 {
     //object fields
@@ -23,26 +29,17 @@ public class Order implements Customizable
         total = ZERO;
         tax = ZERO;
         subtotal = ZERO;
-        orderID = 0;
+        orderID = getRandomInRange();
         itemList = new ArrayList<>();
     }
 
     /**
-     * Parameterized constructor.
-     * @param to double value, order total
-     * @param ta double value, tax total
-     * @param s double value, subtotal before tax
-     * @param o int value, assigned sequentially based on StoreOrders
-     *          controller, based on order of creation of objects
-     * @param l ArrayList of MenuItems, Donuts and Coffees in this Order
+     * Randomly assign a 5-digit number as the ID for this Order.
+     * @return int value, random number within range
      */
-    public Order(double to, double ta, double s,
-            int o, ArrayList<MenuItem> l) {
-        total = to;
-        tax = ta;
-        subtotal= s;
-        orderID = o;
-        itemList = l;
+    private int getRandomInRange() {
+        final Random rand = new Random();
+        return FROM + rand.nextInt(TO - FROM + FROM);
     }
 
     /**
@@ -70,35 +67,11 @@ public class Order implements Customizable
     }
 
     /**
-     * Getter for Order ID.
-     * @return int value, Order ID number
-     */
-    public int getOrderID(){
-        return orderID;
-    }
-
-    /**
-     * Setter for Order ID.
-     * @param id int value, Order ID number
-     */
-    public void setOrderID(int id){
-        this.orderID = id;
-    }
-
-    /**
      * Getter for List of MenuItems.
      * @return ArrayList of MenuItems, items in current order
      */
     public ArrayList<MenuItem> getItemList() {
         return itemList;
-    }
-
-    /**
-     * Setter for List of MenuItems.
-     * @param a ArrayList of MenuItems, items in current order
-     */
-    public void setItemList(ArrayList<MenuItem> a) {
-        this.itemList = a;
     }
 
     /**
@@ -154,9 +127,10 @@ public class Order implements Customizable
         {
             result.append(m.toString()).append("\n");
         }
-        result.append("Subtotal ").append(df.format(subtotal))
-            .append(", Tax ").append(df.format(tax)).append(", Total ")
-            .append(df.format(total));
+        result.append("Order ").append(orderf.format(orderID))
+                .append(", Subtotal ").append(df.format(subtotal))
+                .append(", Tax ").append(df.format(tax)).append(", Total ")
+                .append(df.format(total));
         return result.toString();
     }
 }

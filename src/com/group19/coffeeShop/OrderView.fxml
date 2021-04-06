@@ -20,7 +20,7 @@
         </rowConstraints>
         <Label alignment="CENTER" styleClass="label-title" text="Your Order Details" GridPane.halignment="CENTER">
         </Label>
-        <ListView fx:id="currentOrders" prefHeight="200.0" prefWidth="450.0" GridPane.halignment="CENTER"
+        <ListView fx:id="currentItems" prefHeight="200.0" prefWidth="450.0" GridPane.halignment="CENTER"
                   GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2"
                   GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
          <padding>

@@ -14,14 +14,6 @@ public abstract class Donut extends MenuItem
     }
 
     /**
-     * Parameterized constructor.
-     * @param p price to be assigned to MenuItem
-     */
-    public Donut(double p) {
-        super(p);
-    }
-
-    /**
      * Getter for price of this Donut.
      * @return super.price field value
      */
@@ -41,21 +33,9 @@ public abstract class Donut extends MenuItem
 
     /**
      * Abstract method to be implemented by subclasses as needed.
-     * Gets amount of donuts for this object.
-     */
-    public abstract int getAmount();
-
-    /**
-     * Abstract method to be implemented by subclasses as needed.
      * Sets amount of donuts for this object.
      */
     public abstract void setAmount(int amount);
-
-    /**
-     * Abstract method to be implemented by subclasses as needed.
-     * Gets donut flavor.
-     */
-    public abstract Object getFlavor();
 
     /**
      * Abstract method to be implemented by subclasses as needed.

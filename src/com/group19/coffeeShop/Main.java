@@ -14,6 +14,7 @@ import static com.group19.coffeeShop.Consts.*;
 public class Main extends Application
 {
     public static Stage primaryStage;
+
     /**
      * Sets primary Menu stage for program.
      * @param primaryStage top-level container

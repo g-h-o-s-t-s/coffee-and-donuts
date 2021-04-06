@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Represents a list of Orders placed by user throughout program runtime.
  @author Sagnik Mukherjee, Michael Choe
  */
+@SuppressWarnings("FieldMayBeFinal")
 public class StoreOrders implements Customizable
 {
     //object fields
@@ -19,27 +20,11 @@ public class StoreOrders implements Customizable
     }
 
     /**
-     * Parameterized constructor.
-     * @param l ArrayList of Orders, overall list of order history
-     */
-    public StoreOrders(ArrayList<Order> l) {
-        orderList = l;
-    }
-
-    /**
      * Getter for List of Orders.
      * @return ArrayList of Orders
      */
     public ArrayList<Order> getOrderList() {
         return orderList;
-    }
-
-    /**
-     * Setter for List of Orders.
-     * @param a ArrayList of Orders
-     */
-    public void setOrderList(ArrayList<Order> a) {
-        this.orderList = a;
     }
 
     /**
@@ -77,7 +62,7 @@ public class StoreOrders implements Customizable
         StringBuilder result = new StringBuilder();
         for (Order o : orderList)
         {
-            result.append(o.toString()).append("\n\n");
+            result.append(o.toString()).append("\n==================\n");
         }
         return result.toString();
     }

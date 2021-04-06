@@ -6,37 +6,21 @@
 }
 
 .button,
-.split-menu-button,
-.split-menu-button > .label,
-.split-menu-button > .arrow-button {
+.combo-box {
     -fx-background-color: #d99a6c;
 }
 
-.button:hover,
-.split-menu-button > .label:hover,
-.split-menu-button > .arrow-button:hover {
+.button:hover {
     -fx-background-color: #fed8b1;
 }
 
-.button:focused,
-.split-menu-button:focused > .label,
-.split-menu-button > .arrow-button:focused {
+.button:focused {
     -fx-background-color: #a67b5b;
-}
-
-.label {
-    -fx-font-size: 14pt;
 }
 
 .label-title {
     -fx-font-size: 24pt;
     -fx-font-style: italic;
-}
-
-.text-area {
-    -fx-text-fill: black;
-    -fx-font-family: "SansSerif";
-    -fx-background-color: #6f4e37;
 }
 
 .mini {

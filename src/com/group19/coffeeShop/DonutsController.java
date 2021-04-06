@@ -3,7 +3,6 @@ package com.group19.coffeeShop;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 import java.util.Arrays;
 
 import static com.group19.coffeeShop.Consts.*;

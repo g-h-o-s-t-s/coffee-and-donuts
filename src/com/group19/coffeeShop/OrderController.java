@@ -18,7 +18,7 @@ public class OrderController
     @FXML private TextArea subtotalText;
     @FXML private TextArea salesTaxText;
     @FXML private TextArea totalText;
-    @FXML private ListView<String> currentOrders = new ListView<>();
+    @FXML private ListView<String> currentItems = new ListView<>();
 
     @FXML private Button removeItemButton;
     @FXML private Button placeOrderButton;
@@ -53,14 +53,14 @@ public class OrderController
     }
 
     /**
-     * Event function to remove the selected MenuItem from currentOrders.
+     * Event function to remove the selected MenuItem from currentItems.
      * No action will occur if ListView has no selected item.
      */
     private void removeMenuItem() {
         try {
-            if (!currentOrders.getSelectionModel().isEmpty()) {
+            if (!currentItems.getSelectionModel().isEmpty()) {
                 int selected =
-                        currentOrders.getSelectionModel().getSelectedIndex();
+                        currentItems.getSelectionModel().getSelectedIndex();
                 MenuController.mainOrder.getItemList().remove(selected);
 
                 updateFields();
@@ -77,13 +77,13 @@ public class OrderController
         MenuController.mainOrder.orderPrice();
         updateTexts();
 
-        //populate currentOrders listView with all MenuItem
+        //populate currentItems listView with all MenuItem
         //object details, but leave off the last line
         //which just reports the order's price field values
-        currentOrders.getItems().clear();
+        currentItems.getItems().clear();
         String[] temp = MenuController.mainOrder.toString().split("\n");
         temp = Arrays.copyOf(temp, temp.length - 1);
-        currentOrders.getItems().addAll(temp);
+        currentItems.getItems().addAll(temp);
     }
 
     /**

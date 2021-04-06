@@ -27,40 +27,12 @@ public class HoleDonut extends Donut
     }
 
     /**
-     * Parameterized constructor.
-     * @param p double value, price, assigned w/ super method
-     * @param a int value, number of donuts
-     * @param f String value, donut flavor
-     */
-    public HoleDonut(double p, int a, HDFlavor f) {
-        super(p);
-        amount = a;
-        flavor = f;
-    }
-
-    /**
-     * Getter for donut flavor.
-     * @return enum value, flavor of donut
-     */
-    public HDFlavor getFlavor() {
-        return flavor;
-    }
-
-    /**
      * Setter for donut flavor.
      * @param f enum value, flavor of donut
      */
     public void setFlavor(Object f) {
         if (f instanceof String)
             flavor = HDFlavor.valueOf((String) f);
-    }
-
-    /**
-     * Getter for donut amount.
-     * @return int value, number of donuts
-     */
-    public int getAmount() {
-        return amount;
     }
 
     /**
@@ -106,24 +78,5 @@ public class HoleDonut extends Donut
         return "Hole Donut, " + flavor + " Flavor, " + amount +
                 " @ " + df.format(HOLE_PRICE)
                 + " each, " + df.format(getPrice()) + ".";
-    }
-
-    /**
-     * Compares two objects of this type and determines their equality.
-     * @return boolean value, true if objects equal, false otherwise
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-
-        if (!(o instanceof HoleDonut that)) {
-            return false;
-        }
-
-        //'==' is better for null-safety for enum types.
-        return Double.compare(this.getPrice(), that.getPrice()) == 0
-                && this.getAmount() == that.getAmount()
-                && this.flavor == that.flavor;
     }
 }

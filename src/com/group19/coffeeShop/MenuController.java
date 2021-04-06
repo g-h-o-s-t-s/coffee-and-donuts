@@ -44,7 +44,7 @@ public class MenuController
     }
 
     /**
-     * Runs when viewStoreOrdersButton is clicked.
+     * Runs when orderDonutButton is clicked.
      * Displays a sub-menu for ordering a Donut.
      */
     private void orderDonut() {

@@ -19,14 +19,6 @@ public abstract class MenuItem
     }
 
     /**
-     * Parameterized constructor.
-     * @param p price to be assigned to MenuItem
-     */
-    public MenuItem(double p) {
-        price = p;
-    }
-
-    /**
      * Getter for MenuItem price field.
      * @return double value for price
      */

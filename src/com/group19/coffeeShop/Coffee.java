@@ -7,6 +7,7 @@ import static com.group19.coffeeShop.Consts.*;
  * Represents a Coffee-type MenuItem.
  @author Sagnik Mukherjee, Michael Choe
  */
+@SuppressWarnings("FieldMayBeFinal")
 public class Coffee extends MenuItem implements Customizable
 {
     //object fields
@@ -23,47 +24,11 @@ public class Coffee extends MenuItem implements Customizable
     }
 
     /**
-     * Parameterized constructor.
-     * @param p double value, price, assigned w/ super method
-     * @param s String value, coffee size
-     * @param a ArrayList of Strings, coffee add-ins
-     */
-    public Coffee(double p, String s, ArrayList<String> a) {
-        super(p);
-        size = s;
-        addIns = a;
-    }
-
-    /**
-     * Getter for Coffee size.
-     * @return String value, size of coffee
-     */
-    public String getSize(){
-        return size;
-    }
-
-    /**
      * Setter for Coffee size.
      * @param s String value, size of coffee
      */
     public void setSize(String s){
         this.size = s;
-    }
-
-    /**
-     * Getter for List of add-ins.
-     * @return ArrayList of Strings, add-in values
-     */
-    public ArrayList<String> getAddIn() {
-        return addIns;
-    }
-
-    /**
-     * Setter for List of add-ins.
-     * @param a ArrayList of Strings, add-in values
-     */
-    public void setAddIn(ArrayList<String> a) {
-        this.addIns = a;
     }
 
     /**
@@ -76,7 +41,7 @@ public class Coffee extends MenuItem implements Customizable
     }
 
     /**
-     * Setter for periodEarnings of this Coffee.
+     * Setter for overall price of this Coffee.
      * @param p value to set super.price to
      */
     @Override
@@ -85,7 +50,7 @@ public class Coffee extends MenuItem implements Customizable
     }
 
     /**
-     * Assigns the price for this Donut item.
+     * Assigns the price for this Coffee.
      */
     @Override
     public void itemPrice() {
