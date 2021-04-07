@@ -57,29 +57,32 @@ public class DonutsController
         //Getting the values of the enum proved difficult w/o convoluted
         //regex. This is the most readable solution.
         String selected = donutType.getValue();
-        switch (selected) {
-            case TYPE1 -> {
-                flavors.getItems().clear();
-                flavors.getItems().addAll(
+        if (selected != null) {
+            switch (selected) {
+                case TYPE1 -> {
+                    flavors.getItems().clear();
+                    flavors.getItems().addAll(
                         String.valueOf(CakeDonut.CDFlavor.BOSTON_KREME),
                         String.valueOf(CakeDonut.CDFlavor.JELLY),
                         String.valueOf(CakeDonut.CDFlavor.STRAWBERRY));
-            }
-            case TYPE2 -> {
-                flavors.getItems().clear();
-                flavors.getItems().addAll(
+                }
+                case TYPE2 -> {
+                    flavors.getItems().clear();
+                    flavors.getItems().addAll(
                         String.valueOf(HoleDonut.HDFlavor.CHOCOLATE_GLAZE),
                         String.valueOf(HoleDonut.HDFlavor.POWDERED),
                         String.valueOf(HoleDonut.HDFlavor.PUMPKIN_SPICE));
-            }
-            case TYPE3 -> {
-                flavors.getItems().clear();
-                flavors.getItems().addAll(
+                }
+                case TYPE3 -> {
+                    flavors.getItems().clear();
+                    flavors.getItems().addAll(
                         String.valueOf(YeastDonut.YDFlavor.CHOCOLATE),
                         String.valueOf(YeastDonut.YDFlavor.OLD_FASHIONED),
                         String.valueOf(YeastDonut.YDFlavor.VANILLA_GLAZE));
+                }
+                default ->
+                    MenuController.throwAlert("Illegal value.");
             }
-            default -> MenuController.throwAlert("Illegal value.");
         }
     }
 
@@ -103,8 +106,6 @@ public class DonutsController
 
     /**
      * Event function to temporarily add Donut.
-     * User cannot add same type twice in a row without switching
-     * back and forth between types first.
      */
     private void addDonut() {
         try {
@@ -157,6 +158,8 @@ public class DonutsController
      */
     private void refreshTextFields() {
         currentDonuts.getItems().clear();
+        donutType.getSelectionModel().clearSelection();
+
         String[] temp = tempOrder.toString().split("\n");
         temp = Arrays.copyOf(temp, temp.length - 1);
         currentDonuts.getItems().addAll(temp);

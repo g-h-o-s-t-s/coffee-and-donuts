@@ -46,7 +46,7 @@
             <RadioButton text="Venti" toggleGroup="$size" />
         </HBox>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="154.0" text="Add-Ins" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-        <HBox alignment="CENTER" spacing="5.0" styleClass="mini" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <HBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <CheckBox fx:id="creamBox" text="Cream" />
             <CheckBox fx:id="syrupBox" text="Syrup" />
             <CheckBox fx:id="milkBox" text="Milk" />
